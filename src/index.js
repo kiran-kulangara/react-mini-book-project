@@ -1,18 +1,47 @@
 import React from "react";
 import ReactDom from "react-dom";
 
-function Greeting() {
+// CSS
+import "./index.css";
+
+const firstBook = {
+  author: "Amelia Hepworth",
+  title: "I Love You to the Moon and Back",
+  img: "https://m.media-amazon.com/images/I/51p2SDOCV9L._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
+};
+
+const secondBook = {
+  author: "Jean Reagan",
+  title:
+    "How to Babysit a Grandpa: A Father's Day Book for Dads, Grandpas, and Kids",
+  img: "https://m.media-amazon.com/images/I/516TkRFpEvL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
+};
+
+function BookList() {
   return (
-    <div>
-      <Person />
-      <Message />
-    </div>
+    <section className="booklist">
+      <Book
+        img={firstBook.img}
+        title={firstBook.title}
+        author={firstBook.author}
+      />
+      <Book
+        img={secondBook.img}
+        title={secondBook.title}
+        author={secondBook.author}
+      />
+    </section>
   );
 }
 
-const Person = () => <h2>John Doe</h2>;
-const Message = () => {
-  return <p>This is my message</p>;
+const Book = ({ img, title, author }) => {
+  return (
+    <article className="book">
+      <img src={img} alt="" />
+      <h1>{title}</h1>
+      <h4>{author}</h4>
+    </article>
+  );
 };
 
-ReactDom.render(<Greeting />, document.getElementById("root"));
+ReactDom.render(<BookList />, document.getElementById("root"));
