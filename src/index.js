@@ -31,19 +31,36 @@ function BookList() {
   return (
     <section className="booklist">
       {books.map((book) => (
-        <Book key={book.id} {...book} />
+        <Book key={book.id} {...book}></Book>
       ))}
     </section>
   );
 }
 
 const Book = ({ img, title, author, children }) => {
+  const clickHandler = () => {
+    alert("hello world");
+  };
+
+  const complexExample = (author) => {
+    console.log(author);
+  };
   return (
-    <article className="book">
+    <article
+      className="book"
+      onMouseOver={() => {
+        console.log(title);
+      }}
+    >
       <img src={img} alt="" />
-      <h1>{title}</h1>
+      <h1 onClick={() => console.log(title)}>{title}</h1>
       <h4>{author}</h4>
-      {children}
+      <button type="button" onClick={clickHandler}>
+        reference example
+      </button>
+      <button type="button" onClick={() => complexExample(author)}>
+        more complex example
+      </button>
     </article>
   );
 };
